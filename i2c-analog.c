@@ -6,7 +6,13 @@
 #include <linux/i2c-dev.h>
 #include <ncurses.h>
 
-int rev(int val) { return abs(val - 255); }
+// Reverse the data; i.e. 255 becomes 0.
+// I did this because it didn't make sense
+// to me to have 255 = complete darkness
+int rev(int val)
+{
+	return abs(val - 255);
+}
 
 int main(int argc, char **argv)
 {
@@ -15,7 +21,7 @@ int main(int argc, char **argv)
 	unsigned char value[4];
 	useconds_t delay = 2000;
 	char *dev = "/dev/i2c-1";
-	int addr = 0x4d;
+	int addr = 0x48;
 	int i, j, k, key, new_val, val_mod, cnt, nb, flag;
 	int newR;
 
